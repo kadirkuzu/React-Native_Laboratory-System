@@ -1,19 +1,21 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createNavigationContainerRef, NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator, DrawerNavigationOptions } from "@react-navigation/drawer";
+import { createNavigationContainerRef } from "@react-navigation/native";
 import { PatientRoutes } from "./routes";
 import { HomeScreen } from "../../screens/patient/home-screen/screen";
 import { RootStackParamList } from "./params";
 import { Ionicons } from '@expo/vector-icons';
 import {ThemeColors} from "../../shared/variables/colors";
+import { AddReportScreen } from "../../screens/patient/add-report-screen/screen";
+import { ReportListScreen } from "../../screens/patient/report-list-screen/screen";
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
 export const navigationRef = createNavigationContainerRef();
 
-const Icon = (color:string,size:number,icon:keyof typeof Ionicons.glyphMap) => {
-    return (
-        <Ionicons name={icon} color={color} size={size} />
-    )
+const options = (icon: keyof typeof Ionicons.glyphMap) : DrawerNavigationOptions  => {
+    return { 
+        drawerIcon: ({ color, size }) => <Ionicons name={icon} color={color} size={size} />
+    }
 }
 
 export const PatientNavigator = () => {
@@ -30,7 +32,9 @@ export const PatientNavigator = () => {
             drawerActiveBackgroundColor: ThemeColors.white,
             drawerInactiveTintColor: ThemeColors.white
         }}>
-            <Drawer.Screen name={PatientRoutes.Home} component={HomeScreen} options={{drawerIcon: ({color,size})=>Icon(color,size,'home-outline')}} />
+            <Drawer.Screen name={PatientRoutes.Home} component={HomeScreen} options={options('home-outline')} />
+            <Drawer.Screen name={PatientRoutes.AddReport} component={AddReportScreen} options={options('home-outline')} />
+            <Drawer.Screen name={PatientRoutes.ReportList} component={ReportListScreen} options={options('home-outline')} />
         </Drawer.Navigator>
     );
 };

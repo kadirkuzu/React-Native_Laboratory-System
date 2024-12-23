@@ -1,26 +1,29 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerNavigationOptions } from "@react-navigation/drawer";
 import { createNavigationContainerRef } from "@react-navigation/native";
 import { AdminRoutes } from "./routes";
 import { HomeScreen } from "../../screens/admin/home-screen/screen";
 import { RootStackParamList } from "./params";
 import { Ionicons } from '@expo/vector-icons';
-import {ThemeColors} from "../../shared/variables/colors";
+import { ThemeColors } from "../../shared/variables/colors";
+import { AnalysisScreen } from "../../screens/admin/analysis-screen/screen";
+import { HistoryScreen } from "../../screens/admin/history-screen/screen";
+import { ReportListScreen } from "../../screens/admin/report-list-screen/screen";
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
 export const navigationRef = createNavigationContainerRef();
 
-const Icon = (color:string,size:number,icon:keyof typeof Ionicons.glyphMap) => {
-    return (
-        <Ionicons name={icon} color={color} size={size} />
-    )
+const options = (icon: keyof typeof Ionicons.glyphMap) : DrawerNavigationOptions  => {
+    return { 
+        drawerIcon: ({ color, size }) => <Ionicons name={icon} color={color} size={size} />
+    }
 }
 
 export const AdminNavigator = () => {
     return (
         <Drawer.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor : ThemeColors.black
+                backgroundColor: ThemeColors.black
             },
             headerTintColor: ThemeColors.white,
             drawerStyle: {
@@ -30,7 +33,10 @@ export const AdminNavigator = () => {
             drawerActiveBackgroundColor: ThemeColors.white,
             drawerInactiveTintColor: ThemeColors.white
         }}>
-            <Drawer.Screen name={AdminRoutes.Home} component={HomeScreen} options={{drawerIcon: ({color,size})=>Icon(color,size,'home-outline')}} />
+            <Drawer.Screen name={AdminRoutes.Home} component={HomeScreen} options={options('home-outline')} />
+            <Drawer.Screen name={AdminRoutes.Analysis} component={AnalysisScreen} options={options('home-outline')} />
+            <Drawer.Screen name={AdminRoutes.History} component={HistoryScreen} options={options('home-outline')} />
+            <Drawer.Screen name={AdminRoutes.ReportList} component={ReportListScreen} options={options('home-outline')} />
         </Drawer.Navigator>
     );
 };
