@@ -1,5 +1,5 @@
 export const PatientRoutes = {
     Home : 'Home',
-    AddReport : 'AddReport',
-    ReportList : 'ReportList',
+    AddReport : 'Add Report',
+    ReportList : 'Report List',
 } as const
