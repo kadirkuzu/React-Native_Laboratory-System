@@ -34,7 +34,7 @@ export const TextStyles = StyleSheet.create({
     buttonText: {
         textAlign: 'center',
         fontSize: 20,
-        fontWeight: 500,
+        fontWeight: 600,
         color: ThemeColors.white,
     }
 })

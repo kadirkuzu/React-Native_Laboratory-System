@@ -13,12 +13,15 @@ import { useNavigation } from "@react-navigation/native";
 import { Navigations } from "../../../navigations/navigations";
 import { NavigationType } from "../../../navigations/params";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { AuthNavigationType } from "../../../navigations/auth/params";
+import { AuthRoutes } from "../../../navigations/auth/routes";
 
 export const LoginScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loggedIn, setIsLoggedIn] = useState(undefined as boolean | undefined)
     const navigation = useNavigation<NavigationType>()
+    const authNavigation = useNavigation<AuthNavigationType>()
 
     const redirectToPage = (email: string) => {
         navigation.navigate(email == environment.adminEmail ? Navigations.Admin : Navigations.Patient)
@@ -44,6 +47,10 @@ export const LoginScreen = () => {
         }
     })
 
+    const routeCreateAccount = () => {
+        authNavigation.navigate(AuthRoutes.CreateAccount)
+    }
+
     return (
         <LinearGradient colors={[ThemeColors.secondary, ThemeColors.backgroundColor]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={Styles.screen}>
             {
@@ -54,7 +61,7 @@ export const LoginScreen = () => {
                             <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
                                 Login
                             </Text>
-                            <Text style={[TextStyles.mediumBold, TextStyles.muted, SpaceStyles.mb(30)]}>
+                            <Text style={[TextStyles.mediumBold, TextStyles.muted, SpaceStyles.mb(10)]}>
                                 Welcome back to the app
                             </Text>
                         </View>
@@ -65,7 +72,7 @@ export const LoginScreen = () => {
                         </TouchableOpacity>
                         <View style={[FlexStyles.row, FlexStyles.center]}>
                             <Text style={[TextStyles.medium, TextStyles.white]}>Don't have an account? </Text>
-                            <Button title="Create account" />
+                            <Button title="Create account" onPress={routeCreateAccount} />
                         </View>
                     </View>
                 )

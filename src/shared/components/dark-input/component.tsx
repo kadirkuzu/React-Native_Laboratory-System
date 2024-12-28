@@ -9,10 +9,12 @@ interface Props {
     placeholder: string,
     label?:string,
     keyboardType?: KeyboardTypeOptions
+    error?:string
+    isPassword?: boolean
 }
 
 
-export const DarkInput = ({ onChange, value, placeholder,label, keyboardType }: Props) => {
+export const DarkInput = ({ onChange, value, placeholder,label, keyboardType, error,isPassword = false }: Props) => {
     const [focused, setFocused] = useState(false)
 
     const setIsFocused = () => {
@@ -21,7 +23,7 @@ export const DarkInput = ({ onChange, value, placeholder,label, keyboardType }: 
 
     return (
         <View>
-            {label && (
+            {!!label && (
                 <Text style={Styles.label}>{label}</Text>
             )}
             <TextInput
@@ -30,11 +32,15 @@ export const DarkInput = ({ onChange, value, placeholder,label, keyboardType }: 
                 onBlur={setIsFocused}
                 value={value}
                 placeholder={placeholder}
-                style={[Styles.input(focused)]}
+                style={[Styles.input(focused,!!error)]}
                 placeholderTextColor={ThemeColors.placeholderColor}
                 keyboardType={keyboardType ?? 'default'}
                 autoCapitalize="none"
+                secureTextEntry={isPassword}
             />
+            {!!error && (
+                <Text style={Styles.error}>{error}</Text>
+            )}
         </View>
     )
 }
