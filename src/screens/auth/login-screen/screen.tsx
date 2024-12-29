@@ -1,8 +1,6 @@
 import { Button, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { Styles } from "./styles";
 import { useState } from "react";
-import { ThemeColors } from "../../../shared/variables/colors";
-import { LinearGradient } from "expo-linear-gradient";
 import { DarkInput } from "../../../shared/components/dark-input/component";
 import { TextStyles } from "../../../shared/styles/text-styles";
 import { FlexStyles } from "../../../shared/styles/flex-styles";
@@ -15,6 +13,7 @@ import { NavigationType } from "../../../navigations/params";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { AuthNavigationType } from "../../../navigations/auth/params";
 import { AuthRoutes } from "../../../navigations/auth/routes";
+import { ScreenBackground } from "../../../shared/components/screen-background/component";
 
 export const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -52,32 +51,33 @@ export const LoginScreen = () => {
     }
 
     return (
-        <LinearGradient colors={[ThemeColors.secondary, ThemeColors.backgroundColor]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={Styles.screen}>
-            {
-                loggedIn == false && (
-                    <View style={Styles.container}>
-                        <StatusBar barStyle="light-content" />
-                        <View style={FlexStyles.gap(10)}>
-                            <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
-                                Login
-                            </Text>
-                            <Text style={[TextStyles.mediumBold, TextStyles.muted, SpaceStyles.mb(10)]}>
-                                Welcome back to the app
-                            </Text>
+        <ScreenBackground>
+            <View style={[FlexStyles.flex,FlexStyles.center]}>
+                {
+                    loggedIn == false && (
+                        <View style={Styles.container}>
+                            <StatusBar barStyle="light-content" />
+                            <View style={FlexStyles.gap(10)}>
+                                <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
+                                    Login
+                                </Text>
+                                <Text style={[TextStyles.mediumBold, TextStyles.muted, SpaceStyles.mb(10)]}>
+                                    Welcome back to the app
+                                </Text>
+                            </View>
+                            <DarkInput onChange={setEmail} value={email} placeholder="Email" label="Email" keyboardType="email-address" autoFocus={true}/>
+                            <DarkInput onChange={setPassword} value={password} placeholder="Password" label="Password" isPassword={true} />
+                            <TouchableOpacity style={Styles.button} onPress={login}>
+                                <Text style={TextStyles.buttonText}>Login</Text>
+                            </TouchableOpacity>
+                            <View style={[FlexStyles.row, FlexStyles.center]}>
+                                <Text style={[TextStyles.medium, TextStyles.white]}>Don't have an account? </Text>
+                                <Button title="Create account" onPress={routeCreateAccount} />
+                            </View>
                         </View>
-                        <DarkInput onChange={setEmail} value={email} placeholder="Email" label="Email" keyboardType="email-address" />
-                        <DarkInput onChange={setPassword} value={password} placeholder="Password" label="Password" />
-                        <TouchableOpacity style={Styles.button} onPress={login}>
-                            <Text style={TextStyles.buttonText}>Login</Text>
-                        </TouchableOpacity>
-                        <View style={[FlexStyles.row, FlexStyles.center]}>
-                            <Text style={[TextStyles.medium, TextStyles.white]}>Don't have an account? </Text>
-                            <Button title="Create account" onPress={routeCreateAccount} />
-                        </View>
-                    </View>
-                )
-            }
-
-        </LinearGradient>
+                    )
+                }
+            </View>
+        </ScreenBackground>
     )
 }

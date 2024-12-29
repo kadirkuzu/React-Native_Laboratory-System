@@ -4,6 +4,9 @@ export const FlexStyles = StyleSheet.create({
     row: {
         flexDirection: 'row'
     },
+    flex: {
+        flex: 1
+    },
     center: {
         justifyContent: 'center',
         alignItems: 'center'

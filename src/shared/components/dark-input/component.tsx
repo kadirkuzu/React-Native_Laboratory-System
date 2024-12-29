@@ -11,10 +11,11 @@ interface Props {
     keyboardType?: KeyboardTypeOptions
     error?:string
     isPassword?: boolean
+    autoFocus?: boolean
 }
 
 
-export const DarkInput = ({ onChange, value, placeholder,label, keyboardType, error,isPassword = false }: Props) => {
+export const DarkInput = ({ onChange, value, placeholder,label, keyboardType, error,isPassword = false, autoFocus = false }: Props) => {
     const [focused, setFocused] = useState(false)
 
     const setIsFocused = () => {
@@ -37,6 +38,7 @@ export const DarkInput = ({ onChange, value, placeholder,label, keyboardType, er
                 keyboardType={keyboardType ?? 'default'}
                 autoCapitalize="none"
                 secureTextEntry={isPassword}
+                autoFocus={autoFocus}
             />
             {!!error && (
                 <Text style={Styles.error}>{error}</Text>

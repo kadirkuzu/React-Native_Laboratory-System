@@ -1,3 +1,3 @@
 export const environment = {
-    adminEmail : 'admin@laboratory-app.com'
+    adminEmail : 'kadirkuzu.5656@gmail.com'
 }
