@@ -1,4 +1,4 @@
-import { Alert, Button, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Button, Text, TouchableOpacity, View } from "react-native";
 import { Styles } from "./styles";
 import { useState } from "react";
 import { DarkInput } from "../../../shared/components/dark-input/component";
@@ -34,7 +34,6 @@ export const CreateAccountScreen = () => {
             <View style={[FlexStyles.flex,FlexStyles.center]}>
                 {
                     <View style={Styles.container}>
-                        <StatusBar barStyle="light-content" />
                         <View style={FlexStyles.gap(10)}>
                             <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
                                 Create An Account

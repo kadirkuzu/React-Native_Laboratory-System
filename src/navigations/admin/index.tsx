@@ -15,7 +15,7 @@ export const navigationRef = createNavigationContainerRef();
 
 const options = (icon: keyof typeof Ionicons.glyphMap) : DrawerNavigationOptions  => {
     return { 
-        drawerIcon: ({ color, size }) => <Ionicons name={icon} color={color} size={size} />
+        drawerIcon: ({ color, size }) => <Ionicons name={icon} color={color} size={size} />,
     }
 }
 
@@ -34,9 +34,9 @@ export const AdminNavigator = () => {
             drawerInactiveTintColor: ThemeColors.white
         }}>
             <Drawer.Screen name={AdminRoutes.Home} component={HomeScreen} options={options('home-outline')} />
-            <Drawer.Screen name={AdminRoutes.Analysis} component={AnalysisScreen} options={options('home-outline')} />
-            <Drawer.Screen name={AdminRoutes.History} component={HistoryScreen} options={options('home-outline')} />
-            <Drawer.Screen name={AdminRoutes.ReportList} component={ReportListScreen} options={options('home-outline')} />
+            <Drawer.Screen name={AdminRoutes.Analysis} component={AnalysisScreen} options={options('analytics-outline')} />
+            <Drawer.Screen name={AdminRoutes.ReportList} component={ReportListScreen} options={options('document-text-outline')} />
+            <Drawer.Screen name={AdminRoutes.History} component={HistoryScreen} options={options('time-outline')} />
         </Drawer.Navigator>
     );
 };

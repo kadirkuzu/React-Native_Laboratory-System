@@ -1,4 +1,4 @@
-import { Button, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Button, Text, TouchableOpacity, View } from "react-native";
 import { Styles } from "./styles";
 import { useState } from "react";
 import { DarkInput } from "../../../shared/components/dark-input/component";
@@ -56,7 +56,6 @@ export const LoginScreen = () => {
                 {
                     loggedIn == false && (
                         <View style={Styles.container}>
-                            <StatusBar barStyle="light-content" />
                             <View style={FlexStyles.gap(10)}>
                                 <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
                                     Login
