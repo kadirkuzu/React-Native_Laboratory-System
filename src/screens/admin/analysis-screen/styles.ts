@@ -11,5 +11,10 @@ export const Styles = StyleSheet.create({
         marginVertical: 20,
         padding: 15,
         borderRadius: 10
+    },
+    birthdateText: {
+        position: 'absolute',
+        right: 0,
+        zIndex: 1
     }
 })

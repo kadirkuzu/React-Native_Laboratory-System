@@ -8,6 +8,9 @@ export const TextStyles = StyleSheet.create({
     blue: {
         color: ThemeColors.blue
     },
+    primary: {
+        color: ThemeColors.primary
+    },
     danger: {
         backgroundColor: ThemeColors.danger,
         color: ThemeColors.white,
