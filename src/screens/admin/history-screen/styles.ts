@@ -18,11 +18,12 @@ export const Styles = StyleSheet.create({
       borderRadius: 10,
     },
     nameText: {
-      fontSize: 18,
+      fontSize: 20,
       fontWeight: '600',
     },
     dateText: {
       fontSize: 14,
+      marginTop: 5,
       color: '#666',
     },
   });

@@ -56,6 +56,7 @@ export const DarkInput = forwardRef<TextInput, Props>(({
                 autoCorrect={false}
                 onFocus={setIsFocused}
                 onBlur={setIsFocused}
+                autoComplete={'off'}
             />
             {!!error && (
                 <Text style={Styles.error}>{error}</Text>

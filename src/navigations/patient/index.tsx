@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import {ThemeColors} from "../../shared/variables/colors";
 import { AddReportScreen } from "../../screens/patient/add-report-screen/screen";
 import { ReportListScreen } from "../../screens/patient/report-list-screen/screen";
+import { CustomDrawerContent } from "../custom-drawer-content";
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
@@ -20,7 +21,8 @@ const options = (icon: keyof typeof Ionicons.glyphMap) : DrawerNavigationOptions
 
 export const PatientNavigator = () => {
     return (
-        <Drawer.Navigator screenOptions={{
+        <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}
+            screenOptions={{
             headerStyle: {
                 backgroundColor : ThemeColors.black
             },
@@ -33,8 +35,8 @@ export const PatientNavigator = () => {
             drawerInactiveTintColor: ThemeColors.white
         }}>
             <Drawer.Screen name={PatientRoutes.Home} component={HomeScreen} options={options('home-outline')} />
-            <Drawer.Screen name={PatientRoutes.AddReport} component={AddReportScreen} options={options('home-outline')} />
-            <Drawer.Screen name={PatientRoutes.ReportList} component={ReportListScreen} options={options('home-outline')} />
+            <Drawer.Screen name={PatientRoutes.AddReport} component={AddReportScreen} options={options('camera-outline')} />
+            <Drawer.Screen name={PatientRoutes.ReportList} component={ReportListScreen} options={options('list-outline')} />
         </Drawer.Navigator>
     );
 };

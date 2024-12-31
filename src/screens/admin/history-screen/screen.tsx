@@ -6,6 +6,8 @@ import { Analysis, AnalyzValue } from "../../../models/analysis";
 import { ScreenBackground } from "../../../shared/components/screen-background/component";
 import { format } from 'date-fns';
 import { ResultModal } from "../../../shared/components/result-modal/component";
+import { Ionicons } from '@expo/vector-icons';
+import { ThemeColors } from "../../../shared/variables/colors";
 
 export const HistoryScreen = () => {
     const [analysis, setAnalysis] = useState<Analysis[]>([]);
@@ -17,7 +19,7 @@ export const HistoryScreen = () => {
     }, []);
 
     const remove = async (id: string) => {
-        const collectionRef = fireStore.collection(Collections.Guides);
+        const collectionRef = fireStore.collection(Collections.Analysis);
         await collectionRef.doc(id).delete();
     }
 
@@ -33,8 +35,14 @@ export const HistoryScreen = () => {
                     data={analysis}
                     renderItem={({ item }) => (
                         <TouchableOpacity key={item.date} style={Styles.itemContainer} onPress={()=>openResult(item)} >
-                            <Text style={Styles.nameText}>{item.patientName}</Text>
-                            <Text style={Styles.dateText}>{format(item.date,'dd/MM/yyyy HH:mm')}</Text>
+                            <View>
+                                <Text style={Styles.nameText}>{item.patientName}</Text>
+                                <Text style={Styles.dateText}>{format(item.date,'dd/MM/yyyy HH:mm')}</Text>
+                            </View>
+                            <TouchableOpacity onPress={() => remove(item.id)}>
+                                <Ionicons name="trash" color={ThemeColors.danger} size={22} />
+                            </TouchableOpacity>
+
                         </TouchableOpacity>
                     )}
                     keyExtractor={(item) => item.id}

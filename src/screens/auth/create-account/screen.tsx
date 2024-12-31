@@ -14,6 +14,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 export const CreateAccountScreen = () => {
     const [email, setEmail] = useState('')
+    const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const authNavigation = useNavigation<AuthNavigationType>()
@@ -23,7 +24,12 @@ export const CreateAccountScreen = () => {
     }
 
     const createAccount = async () => {
-        auth.createUserWithEmailAndPassword(email, password).catch(err => Alert.alert('Email already in use.'))
+        auth.createUserWithEmailAndPassword(email, password).then(async (result) => {
+            await auth.currentUser?.updateProfile({
+                displayName: userName
+            })
+            routeLogin()
+        }).catch(err => Alert.alert('Email already in use.'))
     }
 
     const passwordError = () => {
@@ -31,7 +37,7 @@ export const CreateAccountScreen = () => {
     }
 
     return (
-        <KeyboardAwareScrollView contentContainerStyle={{flex: 1}} keyboardShouldPersistTaps={'handled'} bounces={false} overScrollMode={'never'}>
+        <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }} keyboardShouldPersistTaps={'handled'} bounces={false} overScrollMode={'never'}>
             <ScreenBackground>
                 <View style={[FlexStyles.flex, FlexStyles.center]}>
                     <View style={Styles.container}>
@@ -44,6 +50,7 @@ export const CreateAccountScreen = () => {
                             </Text>
                         </View>
                         <DarkInput onChange={setEmail} value={email} placeholder="Email" label="Email" keyboardType="email-address" />
+                        <DarkInput onChange={setUserName} value={userName} placeholder="Username" label="Username" />
                         <DarkInput onChange={setPassword} value={password} placeholder="Password" label="Password" isPassword={true} />
                         <DarkInput onChange={setConfirmPassword} value={confirmPassword} placeholder="Confirm Password" label="Confirm Password"
                             error={passwordError() ? 'Passwords do not match' : ''} isPassword={true} />

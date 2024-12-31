@@ -15,6 +15,7 @@ import { AuthNavigationType } from "../../../navigations/auth/params";
 import { AuthRoutes } from "../../../navigations/auth/routes";
 import { ScreenBackground } from "../../../shared/components/screen-background/component";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useIsFocused } from '@react-navigation/native';
 
 export const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -22,6 +23,7 @@ export const LoginScreen = () => {
     const [loggedIn, setIsLoggedIn] = useState(undefined as boolean | undefined)
     const navigation = useNavigation<NavigationType>()
     const authNavigation = useNavigation<AuthNavigationType>()
+    const isFocused = useIsFocused();
 
     const redirectToPage = (email: string) => {
         navigation.navigate(email == environment.adminEmail ? Navigations.Admin : Navigations.Patient)
@@ -39,7 +41,7 @@ export const LoginScreen = () => {
     }
 
     onAuthStateChanged(getAuth(), user => {
-        if (user) {
+        if (user && isFocused) {
             redirectToPage(user.email!)
             setIsLoggedIn(true)
         } else {
