@@ -25,36 +25,38 @@ export const GuideAccordion = ({ guide, onRemove }: { guide: Guide, onRemove: (i
                 {GuideValueKeys.map((key, index) => {
                     const guideValues = guide[key] as GuideValue[];
 
-                    return (
-                        <View key={key} style={[Styles.section]}>
-                            <Text style={Styles.sectionTitle}>{key}</Text>
+                    if (guideValues) {
+                        return (
+                            <View key={key} style={[Styles.section]}>
+                                <Text style={Styles.sectionTitle}>{key}</Text>
 
-                            <View style={Styles.tableHeader}>
-                                <Text style={Styles.tableHeaderText}>Age</Text>
-                                <Text style={Styles.tableHeaderText}>Value Range</Text>
+                                <View style={Styles.tableHeader}>
+                                    <Text style={Styles.tableHeaderText}>Age</Text>
+                                    <Text style={Styles.tableHeaderText}>Value Range</Text>
+                                </View>
+
+                                {guideValues.map((guideValue, index) => {
+                                    let months = ''
+                                    let minMonths: string | number = guideValue.minMonths
+                                    if (minMonths % 12 == 0 && minMonths != 0) minMonths = minMonths / 12 + ' years'
+                                    else if (minMonths != 0) minMonths = minMonths + ' months'
+
+                                    let maxMonths: string | number = guideValue.maxMonths
+                                    if (maxMonths % 12 == 0) maxMonths = maxMonths / 12 + ' years'
+                                    else maxMonths = maxMonths + ' months'
+
+                                    if (guideValue.maxMonths) months = `${minMonths} - ${maxMonths}`
+                                    else months = `>= ${minMonths}`
+                                    return (
+                                        <View key={index} style={Styles.tableRow}>
+                                            <Text style={Styles.tableCell}>{months}</Text>
+                                            <Text style={Styles.tableCell}>{`${guideValue.minValue} - ${guideValue.maxValue}`}</Text>
+                                        </View>
+                                    )
+                                })}
                             </View>
-
-                            {guideValues.map((guideValue, index) => {
-                                let months = ''
-                                let minMonths: string | number = guideValue.minMonths
-                                if (minMonths % 12 == 0 && minMonths != 0) minMonths = minMonths / 12 + ' years'
-                                else if (minMonths != 0) minMonths = minMonths + ' months'
-
-                                let maxMonths: string | number = guideValue.maxMonths
-                                if (maxMonths % 12 == 0) maxMonths = maxMonths / 12 + ' years'
-                                else maxMonths = maxMonths + ' months'
-
-                                if (guideValue.maxMonths) months = `${minMonths} - ${maxMonths}`
-                                else months = `>= ${minMonths}`
-                                return (
-                                    <View key={index} style={Styles.tableRow}>
-                                        <Text style={Styles.tableCell}>{months}</Text>
-                                        <Text style={Styles.tableCell}>{`${guideValue.minValue} - ${guideValue.maxValue}`}</Text>
-                                    </View>
-                                )
-                            })}
-                        </View>
-                    );
+                        );
+                    }
                 })}
             </Collapsible>
         </View>

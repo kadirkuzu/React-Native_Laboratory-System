@@ -1,13 +1,13 @@
 export class Guide {
     id?: string
     name!: string;
-    IgA!: GuideValue[]
-    IgM!: GuideValue[]
-    IgG!: GuideValue[]
-    IgG1!: GuideValue[]
-    IgG2!: GuideValue[]
-    IgG3!: GuideValue[]
-    IgG4!: GuideValue[]
+    IgA?: GuideValue[]
+    IgM?: GuideValue[]
+    IgG?: GuideValue[]
+    IgG1?: GuideValue[]
+    IgG2?: GuideValue[]
+    IgG3?: GuideValue[]
+    IgG4?: GuideValue[]
 }
 
 export class GuideValue {

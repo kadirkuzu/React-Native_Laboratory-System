@@ -10,7 +10,7 @@ import { TextStyles } from '../../styles/text-styles';
 import { DarkInput } from '../dark-input/component';
 import { AnalyzValue } from '../../../models/analysis';
 
-export type ResultType = { name: string, IgA: GuideValue, IgM: GuideValue, IgG: GuideValue, IgG1: GuideValue, IgG2: GuideValue, IgG3: GuideValue, IgG4: GuideValue }
+export type ResultType = { name: string, IgA?: GuideValue, IgM?: GuideValue, IgG?: GuideValue, IgG1?: GuideValue, IgG2?: GuideValue, IgG3?: GuideValue, IgG4?: GuideValue }
 
 export const ResultModal = ({ modalVisible, setModalVisible, values, showAddHistory = true, headerName }: { modalVisible: boolean, setModalVisible: Dispatch<SetStateAction<boolean>>, values: AnalyzValue, showAddHistory?: boolean, headerName?:string }) => {
 
@@ -32,13 +32,13 @@ export const ResultModal = ({ modalVisible, setModalVisible, values, showAddHist
         let filteredGuides = [] as ResultType[]
         let months = Number(values.age)
         guides.forEach(x => {
-            let IgA = x.IgA.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
-            let IgG = x.IgG.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
-            let IgM = x.IgM.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
-            let IgG1 = x.IgG1.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
-            let IgG2 = x.IgG2.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
-            let IgG3 = x.IgG3.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
-            let IgG4 = x.IgG4.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgA = x.IgA?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgG = x.IgG?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgM = x.IgM?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgG1 = x.IgG1?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgG2 = x.IgG2?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgG3 = x.IgG3?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
+            let IgG4 = x.IgG4?.find(x => (x.minMonths <= months && (x.maxMonths > months || !x.maxMonths)))!
             filteredGuides.push({ name: x.name, IgA, IgG, IgM, IgG1, IgG2, IgG3, IgG4 })
         })
         setActiveGuides(filteredGuides)

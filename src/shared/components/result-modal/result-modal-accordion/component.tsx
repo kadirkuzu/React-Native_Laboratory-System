@@ -41,34 +41,37 @@ export const ResultModalAccordion = ({ result, values }: { result: ResultType, v
                     {
                         keys.map(key => {
                             let guideValue = result[key as keyof ResultType] as GuideValue
-                            let months = ''
-                            let minMonths: string | number = guideValue.minMonths
-                            if (minMonths % 12 == 0 && minMonths != 0) minMonths = minMonths / 12 + ' years'
-                            else if (minMonths != 0) minMonths = minMonths + ' months'
 
-                            let maxMonths: string | number = guideValue.maxMonths
-                            if (maxMonths % 12 == 0) maxMonths = maxMonths / 12 + ' years'
-                            else maxMonths = maxMonths + ' months'
-
-                            if (guideValue.maxMonths) months = `${minMonths} - ${maxMonths}`
-                            else months = `>= ${minMonths}`
-
-                            const resultType = getResultType(key, guideValue.maxValue, guideValue.minValue)
-
-                            return (
-                                <View key={key} style={Styles.tableRow}>
-                                    <Text style={SpaceStyles.width('24%')}>{key} ({getValue(key)})</Text>
-                                    <Text style={[SpaceStyles.width('38%'),TextStyles.center]}>{months}</Text>
-                                    <View style={[SpaceStyles.width('38%'),Styles.tableCellRes]}>
-                                        <Text style={Styles.tableCellResText(resultType)}>
-                                            {`${guideValue.minValue} - ${guideValue.maxValue}`}
-                                        </Text>
-                                        {resultType == 'high' && <Ionicons name="arrow-up-outline" size={20} color={ThemeColors.danger} />}
-                                        {resultType == 'low' && <Ionicons name="arrow-down-outline" size={20} color={ThemeColors.danger}  />}
+                            if(guideValue) {
+                                let months = ''
+                                let minMonths: string | number = guideValue.minMonths
+                                if (minMonths % 12 == 0 && minMonths != 0) minMonths = minMonths / 12 + ' years'
+                                else if (minMonths != 0) minMonths = minMonths + ' months'
+    
+                                let maxMonths: string | number = guideValue.maxMonths
+                                if (maxMonths % 12 == 0) maxMonths = maxMonths / 12 + ' years'
+                                else maxMonths = maxMonths + ' months'
+    
+                                if (guideValue.maxMonths) months = `${minMonths} - ${maxMonths}`
+                                else months = `>= ${minMonths}`
+    
+                                const resultType = getResultType(key, guideValue.maxValue, guideValue.minValue)
+    
+                                return (
+                                    <View key={key} style={Styles.tableRow}>
+                                        <Text style={SpaceStyles.width('24%')}>{key} ({getValue(key)})</Text>
+                                        <Text style={[SpaceStyles.width('38%'),TextStyles.center]}>{months}</Text>
+                                        <View style={[SpaceStyles.width('38%'),Styles.tableCellRes]}>
+                                            <Text style={Styles.tableCellResText(resultType)}>
+                                                {`${guideValue.minValue} - ${guideValue.maxValue}`}
+                                            </Text>
+                                            {resultType == 'high' && <Ionicons name="arrow-up-outline" size={20} color={ThemeColors.danger} />}
+                                            {resultType == 'low' && <Ionicons name="arrow-down-outline" size={20} color={ThemeColors.danger}  />}
+                                        </View>
+    
                                     </View>
-
-                                </View>
-                            )
+                                )
+                            } else return null
                         })
                     }
                 </View>

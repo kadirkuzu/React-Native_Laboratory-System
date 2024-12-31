@@ -8,6 +8,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import apData from './guides/ap.json';
 import tjpData from './guides/tjp.json';
 import cilvData from './guides/cilv.json';
+import osData from './guides/os.json';
+import turkjmedsci from './guides/turkjmedsci.json';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDsoWzojdFkm5sailOWxBH5q2-1HZYIUYI",
@@ -42,6 +44,8 @@ export const uploadDataIfCollectionNotExists = async () => {
         if (querySnapshot.empty) {
             await collectionRef.add(apData)
             await collectionRef.add(tjpData)
+            await collectionRef.add(osData)
+            await collectionRef.add(turkjmedsci)
             await collectionRef.add(cilvData)
         }
     } catch (error) {
