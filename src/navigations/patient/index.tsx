@@ -8,6 +8,7 @@ import {ThemeColors} from "../../shared/variables/colors";
 import { AddReportScreen } from "../../screens/patient/add-report-screen/screen";
 import { ReportListScreen } from "../../screens/patient/report-list-screen/screen";
 import { CustomDrawerContent } from "../custom-drawer-content";
+import { ProfileScreen } from "../../screens/patient/profile/screen";
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
@@ -37,6 +38,7 @@ export const PatientNavigator = () => {
             <Drawer.Screen name={PatientRoutes.Home} component={HomeScreen} options={options('home-outline')} />
             <Drawer.Screen name={PatientRoutes.AddReport} component={AddReportScreen} options={options('camera-outline')} />
             <Drawer.Screen name={PatientRoutes.ReportList} component={ReportListScreen} options={options('list-outline')} />
+            <Drawer.Screen name={PatientRoutes.Profile} component={ProfileScreen} options={options('person')} />
         </Drawer.Navigator>
     );
 };

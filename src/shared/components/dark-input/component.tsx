@@ -41,7 +41,7 @@ export const DarkInput = forwardRef<TextInput, Props>(({
             )}
             <TextInput
                 onChangeText={setValue}
-                value={value.toString()}
+                value={value?.toString()}
                 placeholder={placeholder}
                 style={[Styles.input(focused, !!error), style]}
                 placeholderTextColor={ThemeColors.placeholderColor}

@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { Styles } from "./styles";
 import { Ionicons } from '@expo/vector-icons';
 import { PatientNavigationType } from '../../../navigations/patient/params';
 import { PatientRoutes } from '../../../navigations/patient/routes';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { FlexStyles } from '../../../shared/styles/flex-styles';
+import { auth } from '../../../../firebase';
+import { User } from 'firebase/auth';
 
 export const HomeScreen = () => {
     const navigation = useNavigation<PatientNavigationType>();
+    const isFocused = useIsFocused()
     const [user, setUser] = useState(null as null | User)
 
-    onAuthStateChanged(getAuth(), user => {
-        setUser(user)
-    })
+    useEffect(()=>{
+        setUser(auth.currentUser)
+    },[isFocused])
+
     return (
         <ScrollView contentContainerStyle={Styles.container}>
             <View style={[FlexStyles.row, FlexStyles.center]}>
                 <Text style={Styles.title}>Welcome, </Text>
-                <Text style={Styles.title}>{user?.displayName}</Text>
+                <Text style={Styles.title}>{auth.currentUser?.displayName}</Text>
             </View>
             <Text style={Styles.description}>
                 Easily manage your health reports and track your results.
