@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import { AuthNavigationType } from "../../../navigations/auth/params";
 import { AuthRoutes } from "../../../navigations/auth/routes";
 import { ScreenBackground } from "../../../shared/components/screen-background/component";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export const CreateAccountScreen = () => {
     const [email, setEmail] = useState('')
@@ -30,9 +31,9 @@ export const CreateAccountScreen = () => {
     }
 
     return (
-        <ScreenBackground>
-            <View style={[FlexStyles.flex,FlexStyles.center]}>
-                {
+        <KeyboardAwareScrollView contentContainerStyle={{flex: 1}} keyboardShouldPersistTaps={'handled'} bounces={false} overScrollMode={'never'}>
+            <ScreenBackground>
+                <View style={[FlexStyles.flex, FlexStyles.center]}>
                     <View style={Styles.container}>
                         <View style={FlexStyles.gap(10)}>
                             <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
@@ -54,8 +55,9 @@ export const CreateAccountScreen = () => {
                             <Button title="Login" onPress={routeLogin} />
                         </View>
                     </View>
-                }
-            </View>
-        </ScreenBackground>
+                </View>
+            </ScreenBackground>
+        </KeyboardAwareScrollView>
+
     )
 }

@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Styles } from "./styles";
 import { Ionicons } from '@expo/vector-icons';
 import { AdminRoutes } from "../../../navigations/admin/routes";
 import { AdminNavigationType } from "../../../navigations/admin/params";
+import { uploadDataIfCollectionNotExists } from '../../../../firebase';
 
 export const HomeScreen = () => {
     const navigation = useNavigation<AdminNavigationType>();
+
+    useEffect(()=>{
+        uploadDataIfCollectionNotExists()
+    },[])
 
     return (
         <ScrollView contentContainerStyle={Styles.container}>
@@ -32,6 +37,10 @@ export const HomeScreen = () => {
                 <View style={Styles.featureItem}>
                     <Ionicons name="time-outline" size={30} color="#333" />
                     <Text style={Styles.featureText}>Access analysis history</Text>
+                </View>
+                <View style={Styles.featureItem}>
+                    <Ionicons name="folder-outline" size={30} color="#333" />
+                    <Text style={Styles.featureText}>Add and remove guides</Text>
                 </View>
             </View>
 

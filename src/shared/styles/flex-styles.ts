@@ -11,6 +11,9 @@ export const FlexStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    alignCenter: {
+        alignItems: 'center'
+    },
     gap : (gap:number)=> ({
         gap
     })

@@ -12,5 +12,14 @@ export const SpaceStyles = StyleSheet.create({
     }),
     ml: (marginLeft:number) => ({
         marginLeft
+    }),
+    m: (margin:number) => ({
+        margin
+    }),
+    mx: (marginHorizontal:number) => ({
+        marginHorizontal
+    }),
+    width: (width: number) => ({
+        width
     })
 })

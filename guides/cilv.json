@@ -1,0 +1,74 @@
+{
+    "name": "cilv",
+    "IgA": [
+        {"minMonths": 0, "maxMonths": 1, "minValue": 0, "maxValue": 0.11},
+        {"minMonths": 1, "maxMonths": 4, "minValue": 0.06, "maxValue": 0.5},
+        {"minMonths": 4, "maxMonths": 7, "minValue": 0.08, "maxValue": 0.9},
+        {"minMonths": 7, "maxMonths": 13, "minValue": 0.16, "maxValue": 1},
+        {"minMonths": 13, "maxMonths": 36, "minValue": 0.2, "maxValue": 2.3},
+        {"minMonths": 36, "maxMonths": 60, "minValue": 0.5, "maxValue": 1.5},
+        {"minMonths": 60, "maxMonths": null, "minValue": 0.7, "maxValue": 3.12}
+    ],
+    "IgM": [
+        {"minMonths": 0, "maxMonths": 1, "minValue": 0.05, "maxValue": 0.3},
+        {"minMonths": 1, "maxMonths": 4, "minValue": 0.15, "maxValue": 0.7},
+        {"minMonths": 4, "maxMonths": 7, "minValue": 0.1, "maxValue": 0.9},
+        {"minMonths": 7, "maxMonths": 13, "minValue": 0.25, "maxValue": 1.15},
+        {"minMonths": 13, "maxMonths": 36, "minValue": 0.3, "maxValue": 1.2},
+        {"minMonths": 36, "maxMonths": 60, "minValue": 0.22, "maxValue": 1},
+        {"minMonths": 60, "maxMonths": null, "minValue": 0.56, "maxValue": 3.52}
+    ],
+    "IgG": [
+        {"minMonths": 0, "maxMonths": 1, "minValue": 7, "maxValue": 13},
+        {"minMonths": 1, "maxMonths": 4, "minValue": 2.8, "maxValue": 7.5},
+        {"minMonths": 4, "maxMonths": 7, "minValue": 2, "maxValue": 12},
+        {"minMonths": 7, "maxMonths": 13, "minValue": 3, "maxValue": 15},
+        {"minMonths": 13, "maxMonths": 36, "minValue": 4, "maxValue": 13},
+        {"minMonths": 36, "maxMonths": 60, "minValue": 6, "maxValue": 15},
+        {"minMonths": 60, "maxMonths": null, "minValue": 6.39, "maxValue": 13.44}
+    ],
+    "IgG1": [
+        {"minMonths": 0, "maxMonths": 3, "minValue": 4.35, "maxValue": 10.84},
+        {"minMonths": 3, "maxMonths": 6, "minValue": 2.18, "maxValue": 4.96},
+        {"minMonths": 6, "maxMonths": 12, "minValue": 1.43, "maxValue": 3.94},
+        {"minMonths": 12, "maxMonths": 24, "minValue": 2.86, "maxValue": 6.8},
+        {"minMonths": 24, "maxMonths": 48, "minValue": 3.81, "maxValue": 8.84},
+        {"minMonths": 48, "maxMonths": 72, "minValue": 4.22, "maxValue": 8.02},
+        {"minMonths": 72, "maxMonths": 120, "minValue": 4.56, "maxValue": 9.38},
+        {"minMonths": 120, "maxMonths": 144, "minValue": 3.47, "maxValue": 9.93},
+        {"minMonths": 144, "maxMonths": null, "minValue": 4.22, "maxValue": 12.92}
+    ],
+    "IgG2": [
+        {"minMonths": 0, "maxMonths": 3, "minValue": 1.43, "maxValue": 4.53},
+        {"minMonths": 3, "maxMonths": 6, "minValue": 0.4, "maxValue": 1.67},
+        {"minMonths": 6, "maxMonths": 12, "minValue": 0.23, "maxValue": 1.47},
+        {"minMonths": 12, "maxMonths": 24, "minValue": 0.37, "maxValue": 1.67},
+        {"minMonths": 24, "maxMonths": 48, "minValue": 0.83, "maxValue": 5.13},
+        {"minMonths": 48, "maxMonths": 72, "minValue": 1.13, "maxValue": 4.8},
+        {"minMonths": 72, "maxMonths": 120, "minValue": 1.63, "maxValue": 5.13},
+        {"minMonths": 120, "maxMonths": 144, "minValue": 1.4, "maxValue": 4.4},
+        {"minMonths": 144, "maxMonths": null, "minValue": 1.17, "maxValue": 7.47}
+    ],
+    "IgG3": [
+        {"minMonths": 0, "maxMonths": 3, "minValue": 0.27, "maxValue": 1.46},
+        {"minMonths": 3, "maxMonths": 6, "minValue": 0.04, "maxValue": 0.23},
+        {"minMonths": 6, "maxMonths": 12, "minValue": 0.04, "maxValue": 1},
+        {"minMonths": 12, "maxMonths": 24, "minValue": 0.13, "maxValue": 0.82},
+        {"minMonths": 24, "maxMonths": 48, "minValue": 0.17, "maxValue": 0.9},
+        {"minMonths": 48, "maxMonths": 72, "minValue": 0.15, "maxValue": 1.33},
+        {"minMonths": 72, "maxMonths": 120, "minValue": 0.26, "maxValue": 1.79},
+        {"minMonths": 120, "maxMonths": 144, "minValue": 0.23, "maxValue": 1.17},
+        {"minMonths": 144, "maxMonths": null, "minValue": 0.41, "maxValue": 1.29}
+    ],
+    "IgG4": [
+        {"minMonths": 0, "maxMonths": 3, "minValue": 0.01, "maxValue": 0.47},
+        {"minMonths": 3, "maxMonths": 6, "minValue": 0.01, "maxValue": 1.2},
+        {"minMonths": 6, "maxMonths": 12, "minValue": 0.01, "maxValue": 1.2},
+        {"minMonths": 12, "maxMonths": 24, "minValue": 0.01, "maxValue": 1.2},
+        {"minMonths": 24, "maxMonths": 48, "minValue": 0.02, "maxValue": 1.12},
+        {"minMonths": 48, "maxMonths": 72, "minValue": 0.01, "maxValue": 0.95},
+        {"minMonths": 72, "maxMonths": 120, "minValue": 0.01, "maxValue": 1.53},
+        {"minMonths": 120, "maxMonths": 144, "minValue": 0.01, "maxValue": 1.43},
+        {"minMonths": 144, "maxMonths": null, "minValue": 0.1, "maxValue": 0.67}
+    ]
+}

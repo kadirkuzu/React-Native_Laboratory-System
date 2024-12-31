@@ -7,6 +7,7 @@ export const ThemeColors = {
     white: "#FFFFFF", 
     lightGray: "#D3D3D3", 
     danger: '#dc3545',
+    success: '#198754',
     backgroundColor: "#181818",
     lightBackgroundColor: "#F5F5F5",
     placeholderColor: "#8e8e93"

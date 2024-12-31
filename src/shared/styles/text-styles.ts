@@ -5,11 +5,23 @@ export const TextStyles = StyleSheet.create({
     white: {
         color: ThemeColors.white
     },
+    blue: {
+        color: ThemeColors.blue
+    },
+    danger: {
+        backgroundColor: ThemeColors.danger,
+        color: ThemeColors.white,
+        padding: 5,
+        borderRadius: 5
+    },
     muted: {
         color: ThemeColors.lightGray
     },
     center: {
         textAlign: 'center'
+    },
+    end: {
+        textAlign: 'right'
     },
     large: {
         fontSize: 25,

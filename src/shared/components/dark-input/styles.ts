@@ -11,10 +11,10 @@ export const Styles = StyleSheet.create({
         borderWidth: 1,
         fontSize: 15
     }),
-    label: {
-        color: ThemeColors.white,
+    label: (labelColor: string) => ({
+        color: labelColor,
         marginBottom: 10
-    },
+    }),
     error: {
         color: ThemeColors.danger,
         marginTop: 10

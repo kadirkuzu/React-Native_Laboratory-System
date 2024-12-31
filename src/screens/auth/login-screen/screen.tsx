@@ -1,4 +1,4 @@
-import { Button, Text, TouchableOpacity, View } from "react-native";
+import { Button, KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from "react-native";
 import { Styles } from "./styles";
 import { useState } from "react";
 import { DarkInput } from "../../../shared/components/dark-input/component";
@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { AuthNavigationType } from "../../../navigations/auth/params";
 import { AuthRoutes } from "../../../navigations/auth/routes";
 import { ScreenBackground } from "../../../shared/components/screen-background/component";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -51,32 +52,35 @@ export const LoginScreen = () => {
     }
 
     return (
-        <ScreenBackground>
-            <View style={[FlexStyles.flex,FlexStyles.center]}>
-                {
-                    loggedIn == false && (
-                        <View style={Styles.container}>
-                            <View style={FlexStyles.gap(10)}>
-                                <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
-                                    Login
-                                </Text>
-                                <Text style={[TextStyles.mediumBold, TextStyles.muted, SpaceStyles.mb(10)]}>
-                                    Welcome back to the app
-                                </Text>
+        <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }} keyboardShouldPersistTaps={'handled'} bounces={false} overScrollMode={'never'}>
+            <ScreenBackground>
+                <View style={[FlexStyles.flex, FlexStyles.center]}>
+                    {
+                        loggedIn == false && (
+                            <View style={Styles.container}>
+                                <View style={FlexStyles.gap(10)}>
+                                    <Text style={[TextStyles.xLargeBold, TextStyles.white]}>
+                                        Login
+                                    </Text>
+                                    <Text style={[TextStyles.mediumBold, TextStyles.muted, SpaceStyles.mb(10)]}>
+                                        Welcome back to the app
+                                    </Text>
+                                </View>
+                                <DarkInput onChange={setEmail} value={email} placeholder="Email" label="Email" keyboardType="email-address" />
+                                <DarkInput onChange={setPassword} value={password} placeholder="Password" label="Password" isPassword={true} />
+                                <TouchableOpacity style={Styles.button} onPress={login}>
+                                    <Text style={TextStyles.buttonText}>Login</Text>
+                                </TouchableOpacity>
+                                <View style={[FlexStyles.row, FlexStyles.center]}>
+                                    <Text style={[TextStyles.medium, TextStyles.white]}>Don't have an account? </Text>
+                                    <Button title="Create account" onPress={routeCreateAccount} />
+                                </View>
                             </View>
-                            <DarkInput onChange={setEmail} value={email} placeholder="Email" label="Email" keyboardType="email-address" autoFocus={true}/>
-                            <DarkInput onChange={setPassword} value={password} placeholder="Password" label="Password" isPassword={true} />
-                            <TouchableOpacity style={Styles.button} onPress={login}>
-                                <Text style={TextStyles.buttonText}>Login</Text>
-                            </TouchableOpacity>
-                            <View style={[FlexStyles.row, FlexStyles.center]}>
-                                <Text style={[TextStyles.medium, TextStyles.white]}>Don't have an account? </Text>
-                                <Button title="Create account" onPress={routeCreateAccount} />
-                            </View>
-                        </View>
-                    )
-                }
-            </View>
-        </ScreenBackground>
+                        )
+                    }
+                </View>
+            </ScreenBackground>
+        </KeyboardAwareScrollView>
+
     )
 }

@@ -1,6 +1,7 @@
 export const AdminRoutes = {
     Home : 'Home',
     Analysis : 'Analysis',
+    AddGuides : 'Add Guides',
     History : 'Analysis History',
-    ReportList : 'Report List',
+    Guides : 'Guides',
 } as const

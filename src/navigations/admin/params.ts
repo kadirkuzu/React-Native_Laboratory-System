@@ -5,7 +5,8 @@ export type RootStackParamList = {
     [AdminRoutes.Home]: undefined;
     [AdminRoutes.Analysis]: undefined;
     [AdminRoutes.History]: undefined;
-    [AdminRoutes.ReportList]: undefined;
+    [AdminRoutes.Guides]: undefined;
+    [AdminRoutes.AddGuides]: undefined;
 };
 
 export type AdminNavigationType = DrawerNavigationProp<RootStackParamList>;
