@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { UploadButton } from './upload-button/component';
 import Icon from '@expo/vector-icons/FontAwesome';
@@ -7,6 +7,7 @@ import { PatientNavigationType } from '../../../navigations/patient/params';
 import { PatientRoutes } from '../../../navigations/patient/routes';
 import { Styles } from './styles';
 import { ScreenBackground } from '../../../shared/components/screen-background/component';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AddReportScreen = () => {
   const navigation = useNavigation<PatientNavigationType>();
@@ -16,9 +17,28 @@ export const AddReportScreen = () => {
     setImageUri(uri);
   };
 
+  const saveReportToDevice = async () => {
+    try {
+      const existingReports = await AsyncStorage.getItem('reports');
+      const reports = existingReports ? JSON.parse(existingReports) : [];
+
+      const newReport = {
+        date: new Date().toUTCString(),
+        imageUri,
+      };
+
+      reports.push(newReport);
+
+      await AsyncStorage.setItem('reports', JSON.stringify(reports));
+      navigation.navigate(PatientRoutes.ReportList);
+    } catch (error) {
+      Alert.alert('Error', 'An error occurred while saving the report.');
+    }
+  };
+
   const handleSaveReport = () => {
     setImageUri(null)
-    navigation.navigate(PatientRoutes.ReportList);
+    saveReportToDevice()
   };
 
   return (
