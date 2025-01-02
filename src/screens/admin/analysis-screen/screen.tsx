@@ -61,12 +61,12 @@ export const AnalysisScreen = () => {
                         <Text style={[TextStyles.white, TextStyles.mediumBold]}>Select Birthdate</Text>
                     </TouchableOpacity>
                     <DarkInput value={values.age} onChange={setAge} placeholder="Age (Months)" label="Age (Months)"
-                        returnKeyType={"next"} ref={ageInputRef} onSubmitEditing={() => handleNextFocus(0)} keyboardType="number-pad" />
+                        returnKeyType={"next"} ref={ageInputRef} onSubmitEditing={() => handleNextFocus(0)} keyboardType="numeric" />
                 </View>
                 {
                     GuideValueKeys.map((key, index) => (
                         <DarkInput key={key} value={values.values.find(x => x.key == key)!.value} onChange={(val) => setValue(key, val)} returnKeyType="next" onSubmitEditing={() => handleNextFocus(index + 1)}
-                            placeholder={key} label={key} ref={(el) => (guideInputRefs.current[index] = el)} keyboardType="number-pad" />
+                            placeholder={key} label={key} ref={(el) => (guideInputRefs.current[index] = el)} keyboardType="numeric" />
                     ))
                 }
                 <TouchableOpacity onPress={() => setModalVisible(true)} style={Styles.saveButton} disabled={!values.age || values.values.some(x => !x.value && x.value != '0')}>

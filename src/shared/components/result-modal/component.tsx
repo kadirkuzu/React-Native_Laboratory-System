@@ -47,6 +47,7 @@ export const ResultModal = ({ modalVisible, setModalVisible, values, showAddHist
     useEffect(() => {
         if (modalVisible) {
             setValues()
+            setShowSave(showAddHistory)
         }
     }, [guides, modalVisible])
 

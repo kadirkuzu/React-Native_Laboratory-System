@@ -32,7 +32,7 @@ export const HistoryScreen = () => {
         <ScreenBackground>
             <View style={Styles.container}>
                 <FlatList
-                    data={analysis}
+                    data={analysis.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())}
                     renderItem={({ item }) => (
                         <TouchableOpacity key={item.date} style={Styles.itemContainer} onPress={()=>openResult(item)} >
                             <View>
